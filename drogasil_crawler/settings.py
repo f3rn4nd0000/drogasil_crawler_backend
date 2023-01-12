@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,17 +49,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-CORS_ALLOW_ALL_METHODS = [
-    "GET", "POST" # add allowed methods here
-]
-CORS_URLS_REGEX = r"^/api/.*$"
 CORS_ALLOW_HEADERS = [
     "accept",
     "accept-encoding",
@@ -69,13 +62,11 @@ CORS_ALLOW_HEADERS = [
     "user-agent",
     "x-csrftoken",
     "x-requested-with",
+    "Access-Control-Allow-Origin",
 ]
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8080",
-    "http://192.168.10.15:8080",
+    "http://127.0.0.1:8080",
 ]
-
-
 
 ROOT_URLCONF = 'drogasil_crawler.urls'
 
